@@ -17,9 +17,7 @@ vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.wrap = false
 
-colorIndex = 1
-
-function GetAllColors()
+function GetAllColorschemes()
     local colors = {}
 
     -- Check each potential colors directory in the runtime path
@@ -55,8 +53,10 @@ function GetAllColors()
     return final_colors
 end
 
-function NextColors()
-    local allColors = GetAllColors()
+colorIndex = vim.fn.index(GetAllColorschemes(), vim.g.colors_name)
+
+function NextColorscheme()
+    local allColors = GetAllColorschemes()
     colorIndex = colorIndex + 1
     if colorIndex > #allColors then
         colorIndex = 1
@@ -66,8 +66,8 @@ function NextColors()
     print('[' .. colorIndex .. '/' .. #allColors .. ']:' .. allColors[colorIndex])
 end
 
-function PrevColors()
-    local allColors = GetAllColors()
+function PrevColorscheme()
+    local allColors = GetAllColorschemes()
 
     colorIndex = colorIndex - 1
     if colorIndex <= 0 then
@@ -82,6 +82,6 @@ vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = tru
 vim.api.nvim_set_keymap('n', '<leader>b', ':echo system(findfile("build.sh", ";"))<CR>', { noremap = true, silent = false})
 vim.api.nvim_set_keymap('n', '<leader>d', ':echo system(findfile("buildrun.sh", ";"))<CR>', { noremap = true, silent = false})
 vim.api.nvim_set_keymap('i', '<C-n>', '<C-x><C-o>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-G>', ':lua PrevColors()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-H>', ':lua NextColors()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-G>', ':lua PrevColorscheme()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-H>', ':lua NextColorscheme()<CR>', {noremap = true, silent = true})
 
