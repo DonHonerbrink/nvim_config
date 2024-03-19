@@ -10,8 +10,7 @@ require'lspconfig'.clangd.setup{}
 require'nvim-tree'.setup {}
 require'nvim-web-devicons'.setup {}
 
--- vim.cmd("colorscheme sierra")
-vim.cmd("colorscheme one")
+vim.cmd("colorscheme embark")
 vim.o.expandtab = true
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
