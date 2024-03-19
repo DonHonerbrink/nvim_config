@@ -1,6 +1,6 @@
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Packer manages itself
-  use 'neovim/nvim-lspconfig'  -- Add lspconfig
+  use 'neovim/nvim-lspconfig'
   use 'nvim-tree/nvim-tree.lua'
   use 'kyazdani42/nvim-web-devicons'
 end)
