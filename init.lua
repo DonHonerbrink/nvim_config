@@ -25,9 +25,9 @@ function GetAllColorschemes()
         local colors_dir = source .. '/colors'
         -- Check if directory exists before reading
         local exists = vim.fn.isdirectory(colors_dir)
-        if exists ~= 0 then -- if the directory exists, isdirectory returns 1, otherwise 0
+        if exists ~= 0 then 
             local ok, files = pcall(vim.fn.readdir, colors_dir)
-            if ok then -- Only proceed if readdir was successful
+            if ok then
                 for _, f in ipairs(files) do
                     if f:match('%.vim$') then
                         local cname = f:sub(1, #f - 4)
